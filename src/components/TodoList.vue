@@ -1,51 +1,51 @@
 <template>
-    <div>
-        <ul class="todo-list">
-            <li
-                v-for="todoItem in todoItemList" 
-                class="todo"
-                :key="todoItem.item">
-                <div class="view">
-                    <input 
-                    class="toggle"
-                    type="checkbox"
-                    :id="todoItem.item"
-                    :checked="todoItem.completed === true"
-                    @change="toggleComplete(todoItem)">
-                    <label :for="todoItem.item" class="list-label"> {{ todoItem.item }} </label>
-                    <button class="removeBtn" @click="removeTodo(todoItem, index)"></button>
-                </div>
-            </li>
-        </ul>
-    </div>
+  <div>
+    <ul class="todo-list">
+      <li
+        v-for="todoItem in todoItemList" 
+        class="todo"
+        :key="todoItem.item">
+        <div class="view">
+          <input 
+          class="toggle"
+          type="checkbox"
+          :id="todoItem.item"
+          :checked="todoItem.completed === true"
+          @change="toggleComplete(todoItem)">
+          <label :for="todoItem.item" class="list-label"> {{ todoItem.item }} </label>
+          <button class="removeBtn" @click="removeTodo(todoItem, index)"></button>
+        </div>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
 export default {
-    props: ['todoItemList'],
-    methods: {
-      toggleComplete(todoItem) {
-      todoItem.completed = !todoItem.completed;
-      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
-      },
-    }
+  props: ['todoItemList'],
+  methods: {
+    toggleComplete(todoItem) {
+    todoItem.completed = !todoItem.completed;
+    localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
+    },
+  }
 }
 </script>
 
 <style>
 li {
-    display: flex;
-    min-height: 50px;
-    line-height: 50px;
-    margin: 0.5rem 0;
-    padding: 0 0.9rem;
-    background: white;
-    border-radius: 5px;
+  display: flex;
+  min-height: 50px;
+  line-height: 50px;
+  margin: 0.5rem 0;
+  padding: 0 0.9rem;
+  background: white;
+  border-radius: 5px;
 }
 .todo-list li .removeBtn {
-    position: absolute;
-    border: none;
-    background-color: inherit;
+  position: absolute;
+  border: none;
+  background-color: inherit;
 	margin: auto 0;
 	font-size: 30px;
 	color: #949494;
@@ -53,10 +53,10 @@ li {
 }
 .todo-list li .removeBtn:hover,
 .todo-list li .removeBtn:focus {
-    color: #C18585;
+  color: #C18585;
 }    
 .todo-list li .removeBtn:after {
-    content: '×';
+  content: '×';
 	display: block;
 	height: 100%;
 	line-height: 1.1;

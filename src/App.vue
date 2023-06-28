@@ -20,14 +20,14 @@ export default {
       todoItems: [] //데이터 속성 todoItems 선언
     }
   },
-    created: function() {
-      if (localStorage.length > 0) {
-          for (var i=0; i<localStorage.length; i++) {
-              if (localStorage.key(i) !== 'loglevel:webpack-dev-server') {
-                  this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
-              }
-          }
+  created: function() {
+    if (localStorage.length > 0) {
+      for (var i=0; i<localStorage.length; i++) {
+        if (localStorage.key(i) !== 'loglevel:webpack-dev-server') {
+          this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+        }
       }
+    }
   },
   methods: {
     removeTodo(todoItem, index) {
@@ -41,7 +41,6 @@ export default {
     // addTodo(todoItem) {
     //   localStorage.setItem(this.newTodoItem, JSON.stringify());
     //   this.todoItems.push(todoItem);
-    //   //로컬 스토리지에 데이터를 추가하는 로직
     // }
   },
   components: {
@@ -51,7 +50,6 @@ export default {
     'TodoFooter': TodoFooter
   }
 }
-
 </script>
 
 <style>
