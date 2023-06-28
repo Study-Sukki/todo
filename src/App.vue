@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <TodoHeader></TodoHeader>
-    <TodoInput v-on:addTodo="addTodo"></TodoInput>
-    <TodoList v-bind:propsdata="todoItems" v-on:removeTodo="removeTodo"></TodoList>
-    <TodoFooter v-on:removeAll="clearAll"></TodoFooter>
+    <TodoHeader />
+    <TodoInput @addTodo="addTodo"></TodoInput>
+    <TodoList @removeTodo="removeTodo"></TodoList>
+    <TodoFooter @removeAll="clearAll"></TodoFooter>
   </div>
 </template>
 
@@ -15,16 +15,16 @@ import TodoFooter from './components/TodoFooter.vue'
 
 
 export default {
-  data(){
+  data() {
     return {
       todoItems: [] //데이터 속성 todoItems 선언
     }
   },
-    created: function(){
-      if(localStorage.length > 0){
+    created: function() {
+      if (localStorage.length > 0) {
           for (var i=0; i<localStorage.length; i++) {
-              if(localStorage.key(i)!== 'loglevel:webpack-dev-server'){
-                  this.todoItems.push(localStorage.key(i));
+              if (localStorage.key(i) !== 'loglevel:webpack-dev-server') {
+                  this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
               }
           }
       }
@@ -32,17 +32,17 @@ export default {
   methods: {
     removeTodo(todoItem, index) {
       localStorage.removeItem(todoItem);
-      this.todoItems.splice(index,1);
+      this.todoItems.splice(index, 1);
     },
-    clearAll(){
+    clearAll() {
       localStorage.clear();
       this.todoItems=[];
     },
-    addTodo(todoItem){
-      localStorage.setItem(todoItem,todoItem);
-      this.todoItems.push(todoItem);
-      //로컬 스토리지에 데이터를 추가하는 로직
-    }
+    // addTodo(todoItem) {
+    //   localStorage.setItem(this.newTodoItem, JSON.stringify());
+    //   this.todoItems.push(todoItem);
+    //   //로컬 스토리지에 데이터를 추가하는 로직
+    // }
   },
   components: {
     'TodoHeader': TodoHeader,
@@ -51,6 +51,7 @@ export default {
     'TodoFooter': TodoFooter
   }
 }
+
 </script>
 
 <style>
@@ -68,10 +69,10 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	font-weight: 300;
 }
-button{
+button {
   border-style: groove;
 }
-.shadow{
+.shadow {
   box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.03);
 }
 </style>

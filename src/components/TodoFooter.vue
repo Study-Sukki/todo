@@ -1,6 +1,6 @@
 <template>
     <footer class="footerEnd">
-        <span class="clearAllBtn" type="button" v-on:click="clearTodo">Clear All
+        <span class="clearAllBtn" type="button" @click="clearTodo">Clear All
         </span>
     </footer>
 </template>
@@ -8,7 +8,7 @@
 <script>
 export default {
     methods: {
-        clearTodo: function(){
+        clearTodo: function() {
             this.$emit('removeAll');
         }
     }
@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style scoped>
-.footerEnd{
+.footerEnd {
     width: 8.5rem;
     height: 50px;
     line-height: 50px;
@@ -24,7 +24,7 @@ export default {
     border-radius: 5px;
     margin: 0 auto;
 }
-.clearAllBtn{
+.clearAllBtn {
     color: #e20303;
     display: block;
 }

@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style>
-header{
+header {
     background: #fff;
     margin: 130px 0 40px 0;
     position: relative;

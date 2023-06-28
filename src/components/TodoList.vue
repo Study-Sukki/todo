@@ -2,13 +2,18 @@
     <div>
         <ul class="todo-list">
             <li
-                v-for="todoItem in propsdata" 
+                v-for="todoItem in todoItemList" 
                 class="todo"
-                v-bind:key="todoItem">
+                :key="todoItem.item">
                 <div class="view">
-                    <input class="toggle" type="checkbox">
-                    <label> {{ todoItem }} </label>
-                    <button class="removeBtn" v-on:click="removeTodo(todoItem, index)"></button>
+                    <input 
+                    class="toggle"
+                    type="checkbox"
+                    :id="todoItem.item"
+                    :checked="todoItem.completed === true"
+                    @change="toggleComplete(todoItem)">
+                    <label :for="todoItem.item" class="list-label"> {{ todoItem.item }} </label>
+                    <button class="removeBtn" @click="removeTodo(todoItem, index)"></button>
                 </div>
             </li>
         </ul>
@@ -17,27 +22,18 @@
 
 <script>
 export default {
-    created(){
-        if(localStorage.length > 0){
-            for(var i= 0; i< localStorage.length; i++){
-                this.todoItems.push(localStorage.key(i));
-            }
-        }
-    },
-    props: ['propsdata'],
+    props: ['todoItemList'],
     methods: {
-        removeTodo(todoItem, index) {
-            this.$emit('removeTodo', todoItem, index);
-            localStorage.removeItem(todoItem);
-            this.todoItems.splice(index,1); 
-            //특정 index에서 하나만 지울 수 있는 기능
-        }
-    },
+      toggleComplete(todoItem) {
+      todoItem.completed = !todoItem.completed;
+      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
+      },
+    }
 }
 </script>
 
 <style>
-li{
+li {
     display: flex;
     min-height: 50px;
     line-height: 50px;
