@@ -4,7 +4,7 @@
       class="new-todo" 
       v-model="newTodoItem"
       @keyup.enter="addTodo"
-      autofocus placeholder="What needs to be done?">
+      autofocus placeholder="What needs to be done?" />
     <section class="toggle-bar"> 
       <!-- v-show="todos.length" -->
       <input
@@ -12,7 +12,7 @@
         class="toggle-all" 
         type="checkbox"
         :checked="remaining === 0"
-        @:change="toggleAll">
+        @:change="toggleAll" />
       <label for="toggle-all">Mark all as complete</label>
     </section>
   </div>
@@ -30,7 +30,7 @@ export default {
     addTodo: function() {
       if (this.newTodoItem !== '') {
         //input에 입력된 값이 빈값이 아니면 실행되도록
-        var value = {
+        let value = {
           item: this.newTodoItem,
           completed: false
         };
@@ -51,10 +51,26 @@ export default {
 <style scoped>
 .new-todo {
   background: #fff;
-  margin: 130px 0 40px 0;
+  margin: 0;
+  font-size: 2rem;
+  width: 100%;
+  font-family: inherit;
+  font-weight: inherit;
+  padding: 1rem 1rem 1rem 6rem;
+  height: 5rem;
+  border: none;
+  background: rgba(0, 0, 0, 0.003);
   position: relative;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  width: 100%;
+  line-height: 1.4rem;
+  color: inherit;
+  box-sizing: border-box;
 }
+/* .new-todo:focus {
+  position: relative;
+  margin: 0;
+  border: 0.1rem solid #999;
+} */
 .input::-webkit-input-placeholder {
   font-style: italic;
   font-weight: 400;
@@ -71,64 +87,43 @@ export default {
   color: rgba(0, 0, 0, 0.4);
 }
 .input:focus {
-  outline: 2px solid red;
-}
-.new-todo,
-.edit {
-  position: relative;
-  margin: 0;
-  width: 100%;
-  font-size: 24px;
-  font-family: inherit;
-  font-weight: inherit;
-  line-height: 1.4em;
-  color: inherit;
-  border: 1px solid #999;
-  box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
-  box-sizing: border-box;
-}
-.new-todo {
-  padding: 16px 16px 16px 60px;
-  height: 65px;
-  border: none;
-  background: rgba(0, 0, 0, 0.003);
-  box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
+  outline: 0.2rem solid red;
 }
 .toggle-bar {
-	position: relative;
-	z-index: 2;
-	border-top: 1px solid #e6e6e6;
+  position: relative;
+  z-index: 2;
+  border-top: 0.1rem solid #e6e6e6;
 }
 .toggle-all {
-	width: 1px;
-	height: 1px;
-	border: none;
-	opacity: 0;
-	position: absolute;
-	right: 100%;
-	bottom: 100%;
+  width: 1rem;
+  height: 1rem;
+  border: none;
+  opacity: 0;
+  position: absolute;
+  right: 100%;
+  bottom: 100%;
 }
 .toggle-all + label {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 45px;
-	height: 65px;
-	font-size: 0;
-	position: absolute;
-	top: -65px;
-	left: -0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  height: 6.5rem;
+  font-size: 0;
+  position: absolute;
+  top: -6.5rem;
+  left: -0;
 }
 .toggle-all + label:before {
-	content: '❯';
-	display: inline-block;
-	font-size: 22px;
-	color: #949494;
-	padding: 10px 27px 10px 27px;
-	-webkit-transform: rotate(90deg);
-	transform: rotate(90deg);
+  content: '❯';
+  display: inline-block;
+  font-size: 10rem;
+  color: #949494;
+  padding: 1rem 1rem 1rem 1rem;
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 .toggle-all:checked + label:before {
-	color: #484848;
+  color: #484848;
 }
 </style>

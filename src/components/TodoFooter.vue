@@ -1,7 +1,6 @@
 <template>
   <footer class="footer-end">
-    <span class="clearAllBtn" type="button" @click="clearTodo">Clear All
-    </span>
+    <span class="clearAllBtn" type="button" @click="clearTodo">Clear All</span>
   </footer>
 </template>
 
@@ -17,11 +16,11 @@ export default {
 
 <style scoped>
 .footer-end {
-  width: 8.5rem;
-  height: 50px;
-  line-height: 50px;
+  width: 5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
   background-color:white;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   margin: 0 auto;
 }
 .clearAllBtn {

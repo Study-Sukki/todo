@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <TodoHeader />
-    <TodoInput @addTodo="addTodo"></TodoInput>
-    <TodoList @removeTodo="removeTodo"></TodoList>
-    <TodoFooter @removeAll="clearAll"></TodoFooter>
+    <TodoInput @addTodo="addTodo" />
+    <TodoList @removeTodo="removeTodo" />
+    <TodoFooter @removeAll="clearAll" />
   </div>
 </template>
 
@@ -44,10 +44,10 @@ export default {
     // }
   },
   components: {
-    'TodoHeader': TodoHeader,
-    'TodoInput': TodoInput,
-    'TodoList': TodoList,
-    'TodoFooter': TodoFooter
+    TodoHeader,
+    TodoInput,
+    TodoList,
+    TodoFooter
   }
 }
 </script>
@@ -56,21 +56,20 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 
 body {
-	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	line-height: 1.4em;
-	background: #f5f5f5;
-	color: #111111;
-	min-width: 230px;
-	max-width: 550px;
-	margin: 0 auto;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	font-weight: 300;
+  font: 1.2rem 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.2rem;
+  background: #f5f5f5;
+  color: #111111;
+  max-width: 35rem;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 300;
 }
 button {
   border-style: groove;
 }
 .shadow {
-  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.03);
+  box-shadow: 0.5rem 1rem 1rem rgba(0, 0, 0, 0.03);
 }
 </style>
