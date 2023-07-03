@@ -5,7 +5,7 @@
         v-for="todoItem in todoItemList" 
         class="todo"
         :key="todoItem.item">
-        <div class="view">
+        <div>
           <input 
           class="toggle"
           type="checkbox"

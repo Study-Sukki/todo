@@ -57,11 +57,10 @@ export default {
 
 body {
   font: 1.2rem 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  line-height: 1.2rem;
   background: #f5f5f5;
   color: #111111;
   max-width: 35rem;
-  margin: 0 auto;
+  margin: 8rem auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 300;
