@@ -3,7 +3,7 @@
     <TodoHeader />
     <TodoInput @addTodo="addTodo" />
     <TodoList @removeTodo="removeTodo" />
-    <TodoFooter @removeAll="clearAll" />
+    <TodoFooter @removeAll="removeAll" />
   </div>
 </template>
 
@@ -34,14 +34,10 @@ export default {
       localStorage.removeItem(todoItem);
       this.todoItems.splice(index, 1);
     },
-    clearAll() {
+    removeAll() {
       localStorage.clear();
       this.todoItems=[];
     },
-    // addTodo(todoItem) {
-    //   localStorage.setItem(this.newTodoItem, JSON.stringify());
-    //   this.todoItems.push(todoItem);
-    // }
   },
   components: {
     TodoHeader,

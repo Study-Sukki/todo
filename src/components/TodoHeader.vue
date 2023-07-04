@@ -28,11 +28,10 @@ export default {
         localStorage.setItem(this.newTodoItem, JSON.stringify(value));
         //App컴포넌트로 이벤트 전달
         this.clearInput();
-        //input초기화 > 지금 안됨... 왜 안되지
       }
     },
     clearInput() {
-      this.newTodoITem= '';
+      this.newTodoItem = '';
     }
   }
 }
@@ -51,7 +50,7 @@ h1 {
 }
 .new-todo {
   margin: 0;
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   width: 100%;
   font-family: inherit;
   font-weight: inherit;
