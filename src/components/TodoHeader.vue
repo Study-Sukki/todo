@@ -6,6 +6,7 @@
         v-model="newTodoItem"
         @keyup.enter="addTodo"
         placeholder="What needs to be done?" />
+        {{ todoItem }}
   </header>
 </template>
 
@@ -18,15 +19,9 @@ export default {
     }
   },
   methods: {
-    addTodo: function() {
+    addTodo() {
       if (this.newTodoItem !== '') {
-        //input에 입력된 값이 빈값이 아니면 실행되도록
-        let value = {
-          item: this.newTodoItem,
-          completed: false
-        };
-        localStorage.setItem(this.newTodoItem, JSON.stringify(value));
-        //App컴포넌트로 이벤트 전달
+        this.$emit("addItem", this.newTodoItem);
         this.clearInput();
       }
     },

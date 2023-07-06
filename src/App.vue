@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <TodoHeader />
-    <TodoInput @addTodo="addTodo" />
-    <TodoList @removeTodo="removeTodo" />
+    <TodoHeader @addItem="addTodo" />
+    <TodoInput />
+    <TodoList :todoItemLists="todoItems" @removeTodo="removeTodo" />
     <TodoFooter @removeAll="removeAll" />
   </div>
 </template>
@@ -20,18 +20,28 @@ export default {
       todoItems: [] //데이터 속성 todoItems 선언
     }
   },
-  created: function() {
+  created() {
     if (localStorage.length > 0) {
-      for (var i=0; i<localStorage.length; i++) {
+      for (let i=0; i<localStorage.length; i++) {
         if (localStorage.key(i) !== 'loglevel:webpack-dev-server') {
-          this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+          this.todoItems.push(
+            JSON.stringify(localStorage.getItem(localStorage.key(i)))
+          );
         }
       }
     }
   },
   methods: {
+    addTodo(todoItem) {
+      let value = {
+        item: todoItem,
+        completed: false
+      };
+      localStorage.setItem(todoItem, JSON.stringify(value));
+      this.todoItems.push(value);
+    },
     removeTodo(todoItem, index) {
-      localStorage.removeItem(todoItem);
+      localStorage.removeItem(todoItem.item);
       this.todoItems.splice(index, 1);
     },
     removeAll() {
