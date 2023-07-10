@@ -27,7 +27,7 @@ export default {
 <style scoped>
 .footer-end {
   padding: 1rem 1.5rem;
-	border-top: 0.1rem solid #e6e6e6;
+  border-top: 0.1rem solid #e6e6e6;
 }
 .clearAllBtn {
   color: #e20303;

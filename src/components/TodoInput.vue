@@ -27,11 +27,11 @@ export default {
 /* toggle-all을 포함하고 있는 네모칸도 클릭했을때 주변 테두리 들어갈 수 있도록 하기*/
 .toggle-all {
   width: 0.1rem;
-	height: 1rem;
-	opacity: 0;
-	position: absolute;
-	right: 100%;
-	bottom: 100%;
+  height: 1rem;
+  opacity: 0;
+  position: absolute;
+  right: 100%;
+  bottom: 100%;
 }
 .toggle-all + label{
   display: flex;
@@ -48,12 +48,12 @@ export default {
   border-color: red;
 }
 .toggle-all + label:before {
-	content: '❯';
-	display: inline-block;
-	font-size: 2rem;
-	color: #949494;
-	padding: 0 1rem 0 1rem;
-	-webkit-transform: rotate(90deg);
-	transform: rotate(90deg);
+  content: '❯';
+  display: inline-block;
+  font-size: 2rem;
+  color: #949494;
+  padding: 0 1rem 0 1rem;
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 </style>
