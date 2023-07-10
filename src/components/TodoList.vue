@@ -4,15 +4,14 @@
       <li
         class="todoItem"
         v-for="todoItem in todoItemLists"
-        :key="todoItem"
-        :class="{ completed: todoItem.complted, editing: todoItem === editedTodo }"
+        :key="todoItem.item"
         >
       <input
         class="toggle"
         type="checkbox" 
-        :id="todoItem.item" 
+        :id="todoItem.item"
         :checked="todoItem.completed === true"
-        :change="toggleCompleted=(todoItem)"
+        @change="toggleCompleted(todoItem)"
       />
       <label :for="todoItem.item" class="list-label">
         <p class="list-text">{{ todoItem.item }}</p>
@@ -25,16 +24,20 @@
 
 <script>
 export default {
-  props: ['todoItemLists'],
-  methods: {
-    toggleComplted(todoItem) {
-      todoItem.complted = !todoItem.complted;
-      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
-    },
-    removeTodo(todoItem, index) {
-      this.$emit("removeTodo", todoItem, index);
+  props: {
+    todoItemLists: {
+      type: Array,
+      required: true
     }
-  }
+  },
+  methods: {
+    toggleCompleted (todoItem) {
+      this.$emit('toggleItem', todoItem);
+    },
+    removeTodo (todoItem, index) {
+      this.$emit('removeTodo', todoItem, index);
+    },
+  },
 }
 </script>
 
@@ -63,7 +66,7 @@ li {
 }
 .todo-list li .toggle {
   text-align: center;
-  width: 2rem;
+  width: 3rem;
   height: auto;
   position: absolute;
   top: 0;
@@ -110,5 +113,8 @@ li {
   display: block;
   height: 100%;
   line-height: 1.1;
+}
+.list-text {
+  margin: 1rem 0 1rem 3rem;
 }
 </style>

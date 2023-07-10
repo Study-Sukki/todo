@@ -1,9 +1,12 @@
 <template>
   <div id="app">
     <TodoHeader @addItem="addTodo" />
-    <TodoInput />
-    <TodoList :todoItemLists="todoItems" @removeTodo="removeTodo" />
-    <TodoFooter @removeAll="removeAll" />
+    <TodoInput @toggleAll="toggleAll"/>
+    <TodoList 
+      :todoItemLists="todoItems" 
+      @removeTodo="removeTodo" 
+      @toggleItem="toggleCompleted"/>
+    <TodoFooter @removeAll="removeAll" :todoCount="remaining"/>
   </div>
 </template>
 
@@ -13,11 +16,10 @@ import TodoInput from './components/TodoInput.vue'
 import TodoList from './components/TodoList.vue'
 import TodoFooter from './components/TodoFooter.vue'
 
-
 export default {
   data() {
     return {
-      todoItems: [] //데이터 속성 todoItems 선언
+      todoItems: [], //데이터 속성 todoItems 선언
     }
   },
   created() {
@@ -32,7 +34,7 @@ export default {
     }
   },
   methods: {
-    addTodo(todoItem) {
+    addTodo (todoItem) {
       let value = {
         item: todoItem,
         completed: false
@@ -40,14 +42,32 @@ export default {
       localStorage.setItem(todoItem, JSON.stringify(value));
       this.todoItems.push(value);
     },
-    removeTodo(todoItem, index) {
+    toggleAll (todo) {
+      this.todoItems.forEach((todoItem) => (todoItem.completed = todo.todoItems.checked))
+    },
+    removeTodo (todoItem, index) {
       localStorage.removeItem(todoItem.item);
       this.todoItems.splice(index, 1);
     },
-    removeAll() {
+    toggleCompleted (todoItem) {
+      todoItem.completed = !todoItem.completed;
+      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
+    },
+    removeAll () {
       localStorage.clear();
       this.todoItems=[];
     },
+  },
+  computed: {
+    remaining () {
+      let leftCount = 0;
+      for (let i = 0; i < this.todoItems.length; i++) {
+        if (this.todoItems[i].completed === false) {
+          leftCount++;
+        }
+      }
+      return leftCount;
+    }
   },
   components: {
     TodoHeader,

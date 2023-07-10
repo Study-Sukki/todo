@@ -6,7 +6,6 @@
         v-model="newTodoItem"
         @keyup.enter="addTodo"
         placeholder="What needs to be done?" />
-        {{ todoItem }}
   </header>
 </template>
 
@@ -19,13 +18,13 @@ export default {
     }
   },
   methods: {
-    addTodo() {
+    addTodo () {
       if (this.newTodoItem !== '') {
-        this.$emit("addItem", this.newTodoItem);
+        this.$emit('addItem', this.newTodoItem);
         this.clearInput();
       }
     },
-    clearInput() {
+    clearInput () {
       this.newTodoItem = '';
     }
   }
