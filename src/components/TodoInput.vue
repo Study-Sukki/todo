@@ -1,12 +1,12 @@
 <template>
   <div>
-    <section>
+    <section v-show="todoItemLists.length">
       <input
         id="toggle-all" 
         class="toggle-all"
         type="checkbox"
         @change="toggleAll"
-        :checked="todoCount === 0"/>
+        :checked="todoCount === 0" />
       <label for="toggle-all">Mark all as complete</label>
     </section>
   </div>
@@ -14,9 +14,19 @@
 
 <script>
 export default {
+  props: {
+  todoCount: {
+    type: Number,
+    required: true  
+    },
+  todoItemLists: {
+    type: Array,
+    default: () => []
+    }
+  },
   methods: {
-    toggleAll (todoItem) {
-        this.$emit('toggleAll', todoItem);
+    toggleAll () {
+        this.$emit('toggleAll');
     },
   }
 }
@@ -30,30 +40,32 @@ export default {
   height: 1rem;
   opacity: 0;
   position: absolute;
+  border: none;
   right: 100%;
   bottom: 100%;
 }
 .toggle-all + label{
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 5rem;
   width: 3rem;
   font-size: 0;
-  position: absolute;
-  top: 8rem;
-}
-.toggle-all:checked + label:before {
-  color: #d91111;
-  border-color: red;
+  top: 1rem;
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 .toggle-all + label:before {
   content: '❯';
   display: inline-block;
   font-size: 2rem;
-  color: #949494;
+  color: #e6e6e6;
   padding: 0 1rem 0 1rem;
-  -webkit-transform: rotate(90deg);
-  transform: rotate(90deg);
+}
+.toggle-all:checked + label:before {
+  color: #d91111;
+}
+.toggle-all {
+  display: none;
 }
 </style>

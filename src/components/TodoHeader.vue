@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  data: function() {
+  data() {
     return {
       newTodoItem: ''
       //input에서 v-model="newTodoItem"을 통해 입력하는 값이 바로 newTodoItem 데이터로 들어감
@@ -34,7 +34,7 @@ export default {
 <style>
 h1 {
   position: absolute;
-  top: -5rem;
+  top: -14rem;
   width: 100%;
   font-size: 7rem;
   font-weight: 200;
@@ -45,17 +45,15 @@ h1 {
 .new-todo {
   margin: 0;
   font-size: 1.7rem;
-  width: 100%;
   font-family: inherit;
   font-weight: inherit;
   padding: 1rem 1rem 1rem 4rem;
-  height: 5rem;
+  height: 4rem;
   border: none;
   position: relative;
   width: 100%;
   line-height: 1.4rem;
   color: inherit;
   box-sizing: border-box;
-  box-shadow: 0.5rem 1rem 1rem rgba(0, 0, 0, 0.1);
 }
 </style>
