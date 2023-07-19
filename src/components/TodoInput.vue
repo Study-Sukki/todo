@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- todolist에 아무 리스트가 없을때,(맨처음)에 toggle-all 버튼이 안보이는 기능을 넣기 위해서 section으로 감싸둠 -->
     <section v-show="todoItemLists.length">
       <input
         id="toggle-all" 
@@ -15,18 +16,18 @@
 <script>
 export default {
   props: {
-  todoCount: {
-    type: Number,
-    required: true  
+    todoCount: {
+      type: Number,
+      required: true  
     },
-  todoItemLists: {
-    type: Array,
-    default: () => []
+    todoItemLists: {
+      type: Array,
+      default: () => []
     }
   },
   methods: {
     toggleAll () {
-        this.$emit('toggleAll');
+      this.$emit('toggleAll');
     },
   }
 }

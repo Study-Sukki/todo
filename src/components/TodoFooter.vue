@@ -20,6 +20,10 @@
 <script>
 export default {
   props: {
+    size: {
+      type: Number,
+      default: 0
+    },
     filterType: {
       type: String,
       dafault: 'All'
@@ -33,7 +37,7 @@ export default {
       default: () => []
     }
   },
-  data() {
+  data () {
     return {
       filters: ["All", "Active", "Completed"]
     }

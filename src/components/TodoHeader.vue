@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       newTodoItem: ''
       //input에서 v-model="newTodoItem"을 통해 입력하는 값이 바로 newTodoItem 데이터로 들어감
