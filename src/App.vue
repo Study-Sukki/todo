@@ -3,16 +3,15 @@
     <section class="todoapp">
       <TodoHeader @addItem="addTodo" />
       <TodoInput
-        :todoCount="filteredList.length"
         :todoItemLists="todoItems" 
         @toggleAll="toggleAll" />
       <TodoList
-        :todoItemLists="todoItems"
+        :todoItemLists="filteredList"
         @removeTodo="removeTodo"
         @toggleItem="toggleCompleted" />
       <TodoFooter
         :filterType="filterType"
-        :todoCount="filteredList.length"
+        :todoCount="remainCount"
         :todoItemLists="todoItems"
         @removeAll="removeAll"
         @removeCompleted="removeCompleted"
@@ -28,13 +27,13 @@ import TodoList from './components/TodoList.vue'
 import TodoFooter from './components/TodoFooter.vue'
 
 export default {
-  data() {
+  data () {
     return {
       todoItems: [], //데이터 속성 todoItems 선언
       filterType: 'All' //기본 필터 All로 지정
     }
   },
-  created() {
+  created () {
     if (localStorage.length > 0) {
       for (let i = 0; i < localStorage.length; i++) {
         if (localStorage.key(i) !== 'loglevel:webpack-dev-server') {
@@ -45,7 +44,7 @@ export default {
   },
   methods: {
     addTodo (todoItem) {
-      let value = {
+      const value = {
         item: todoItem,
         completed: false
       };
@@ -77,6 +76,9 @@ export default {
     }
   },
   computed: {
+    remainCount () {
+      return this.todoItems.filter(todoItem => !todoItem.completed).length
+    },
     filteredList () {
       switch (this.filterType) {
         case "All": {

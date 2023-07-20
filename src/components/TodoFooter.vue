@@ -7,12 +7,12 @@
     <ul class="filters">
       <li 
         v-for="(filter, index) in filters" 
-        :key="index" 
+        :key="index"
         @click="handleFilterType(filter)">
         <a href="javascript:;" :class="{selected: filterType === filter}">{{ filter }}</a>
       </li>
     </ul>
-    <button class="clear-completed" @click="delcompleted"> Clear completed </button>
+    <button class="clear-completed" @click="delcompleted" v-show="todoItemLists.length>todoCount"> Clear completed </button>
     <span class="clearAllBtn" type="button" @click="clearTodo">Clear All</span>
   </footer>
 </template>
@@ -33,7 +33,7 @@ export default {
       default: () => []
     }
   },
-  data() {
+  data () {
     return {
       filters: ["All", "Active", "Completed"]
     }
@@ -71,7 +71,7 @@ export default {
   overflow: hidden;
 }
 .clearAllBtn {
-  top: 1.5rem;
+  margin: 1.5rem 0 0 0;
   color: #e20303;
   text-align: center;
   display: block;
@@ -106,17 +106,16 @@ export default {
 }
 .filters li a {
   color: inherit;
-  margin: 0.5rem;
+  margin: 0.7rem;
   text-decoration: none;
   padding: 0.1rem 0.3rem;
-  border: 0.01rem solid transparent;
   border-radius: 0.2rem;
 }
 .filters li a:hover {
-  border-color: red;
+  border: 0.05rem solid #CE4646;
 }
-.filter li a.selected {
-  border-color: blue;
+.filters li a.selected {
+  border: 0.08rem solid #CE4646;
 }
 .clear-completed,
 html, .clear-completed:active {
