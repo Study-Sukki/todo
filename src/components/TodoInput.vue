@@ -6,8 +6,7 @@
         id="toggle-all" 
         class="toggle-all"
         type="checkbox"
-        @change="toggleAll"
-        :checked="todoCount === 0" />
+        @change="toggleAll"/>
       <label for="toggle-all">Mark all as complete</label>
     </section>
   </div>
@@ -16,10 +15,6 @@
 <script>
 export default {
   props: {
-    todoCount: {
-      type: Number,
-      required: true  
-    },
     todoItemLists: {
       type: Array,
       default: () => []

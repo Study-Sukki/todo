@@ -7,7 +7,7 @@
     <ul class="filters">
       <li 
         v-for="(filter, index) in filters" 
-        :key="index" 
+        :key="index"
         @click="handleFilterType(filter)">
         <a href="javascript:;" :class="{selected: filterType === filter}">{{ filter }}</a>
       </li>

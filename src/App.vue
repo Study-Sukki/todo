@@ -3,7 +3,6 @@
     <section class="todoapp">
       <TodoHeader @addItem="addTodo" />
       <TodoInput
-        :todoCount="remainCount"
         :todoItemLists="todoItems" 
         @toggleAll="toggleAll" />
       <TodoList
@@ -78,13 +77,7 @@ export default {
   },
   computed: {
     remainCount () {
-      let leftCount = 0;
-      for (let i = 0; i < this.todoItems.length; i++) {
-        if (this.todoItems[i].completed === false) {
-          leftCount++;
-        }
-      }
-      return leftCount;
+      return this.todoItems.filter(todoItem => !todoItem.completed).length
     },
     filteredList () {
       switch (this.filterType) {
