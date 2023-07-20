@@ -7,13 +7,12 @@
         :todoItemLists="todoItems" 
         @toggleAll="toggleAll" />
       <TodoList
-        :todoItemLists="todoItems"
+        :todoItemLists="filteredList"
         @removeTodo="removeTodo"
         @toggleItem="toggleCompleted" />
       <TodoFooter
         :filterType="filterType"
         :todoCount="remainCount"
-        :size="filteredList.length"
         :todoItemLists="todoItems"
         @removeAll="removeAll"
         @removeCompleted="removeCompleted"
